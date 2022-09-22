@@ -37,7 +37,7 @@ const questions = [
     {
         type: 'list',
         message: 'Please select a license if applicable.',
-        choices: ['MIT', 'Mozilla Public', 'Apache', 'Boost Software'],
+        choices: ['MIT', 'Mozilla Public', 'Apache', 'Boost Software', 'No License'],
         name: 'license' 
     },
     {
