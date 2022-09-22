@@ -11,10 +11,51 @@ function renderLicenseLink(license) {}
 function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(title, description, installation, usage, contributors) {
-  return `# ${title}
+function generateMarkdown(data) {
+  const {title, description, installation, usage, contribution, test, github, email, license} = data;
+  return `# ${title} 
+  
+  ## Description
+  ${description}
 
-`;
+  ## Table of Contents
+  [Installation](#installation)
+
+  [Usage](#usage)
+
+  [Contributors](#contributors)
+
+  [Test](#test)
+
+  [Questions](#questions)
+
+  [License](#license)
+
+
+  ## Installation
+  Right click the 'index.js' file and click 'Open in Integrated Terminal' type the following in your terminal:
+  \`\`\`
+  ${installation}
+  \`\`\`
+
+  ## Usage
+  \`\`\`
+  ${usage}
+  \`\`\`
+
+  ## Contributing
+  ${contribution}
+
+  ## Test
+  \`\`\`
+  ${test}
+  \`\`\`
+
+  ## Questions
+  If you have any questions you can contact me at https://github.com/${github} or you can email me any questions at ${email}.
+
+
+  ${license}`;
 }
 
 module.exports = generateMarkdown;

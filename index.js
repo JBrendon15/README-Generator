@@ -26,8 +26,8 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Please name any contributors you had for the project.',
-        name: 'contributors'
+        message: 'How can other uses contribute to your project?',
+        name: 'contribution'
     },
     {
         type: 'input',
@@ -37,25 +37,34 @@ const questions = [
     {
         type: 'list',
         message: 'Please select a license if applicable.',
-        choices: [],
+        choices: ['MIT', 'Mozilla Public', 'Apache', 'Boost Software'],
         name: 'license' 
+    },
+    {
+        type: 'input',
+        message: 'What is your GitHub username?',
+        name: 'github'
+    },
+    {
+        type: 'input',
+        message: 'What is your email?',
+        name: 'email'
     }
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile('README.md', createRead(title, description, installation, usage, contributors), (err) =>
+    fs.writeFile(fileName, createRead(data), (err) =>
     err ? console.error(err) : console.log('Inputs Successfully Recorded!'))
 }
 
 // TODO: Create a function to initialize app
 function init() {
-    // inquirer
-    //     .prompt(questions)
-    //     .then((response) =>
-    //     writeToFile('README.md', response))     
-        // .then(({title, description, installation, usage, contributors}))
-        // writeToFile()
+    inquirer
+        .prompt(questions)  
+        .then((data) =>{
+            writeToFile('README.md', data)
+        })
 }
 
 // Function call to initialize app
